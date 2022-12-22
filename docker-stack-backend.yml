@@ -1,0 +1,38 @@
+version: 3.7
+
+volumes:
+
+networks:
+  frontend:
+    driver: overlay
+
+services:
+
+  test:
+    image: busybox
+    command: date
+    deploy:
+      mode: replicated
+      replicas: 0
+      labels:
+        - "swarm.cronjob.enable=true"
+        - "swarm.cronjob.schedule=* * * * *"
+        - "swarm.cronjob.skip-running=false"
+      restart_policy:
+        condition: none
+
+  swarm-cronjob:
+    image: crazymax/swarm-cronjob
+    env:
+      monitoring
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - "TZ=Europe/Paris"
+      - "LOG_LEVEL=info"
+      - "LOG_JSON=false"
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+

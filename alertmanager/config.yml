@@ -1,10 +1,9 @@
-route:
-  receiver: 'slack'
-
-receivers:
-  - name: 'slack'
-#       slack_configs:
-#           - send_resolved: true
-#             username: '<username>'
-#             channel: '#<channel-name>'
-#             api_url: '<incomming-webhook-url>'
+global:
+  resolve_timeout: 5m
+# route:
+#   receiver: webhook_receiver
+# receivers:
+#     - name: webhook_receiver
+#       webhook_configs:
+#         - url: 'https://webhook.site/d2672168-e7e7-431a-93e3-59e8a420254b'
+#           send_resolved: false

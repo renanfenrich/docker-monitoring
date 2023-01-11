@@ -6,8 +6,8 @@ global:
 
   # Attach these labels to any time series or alerts when communicating with
   # external systems (federation, remote storage, Alertmanager).
-  external_labels:
-      monitor: 'my-project'
+  # external_labels:
+  #     monitor: 'my-project'
 
 # Load and evaluate rules in this file every 'evaluation_interval' seconds.
 rule_files:
@@ -55,7 +55,7 @@ scrape_configs:
 
     # Override the global default and scrape targets from this job every 5 seconds.
     scrape_interval: 15s
-  
+
     dns_sd_configs:
     - names:
       - 'tasks.node-exporter'

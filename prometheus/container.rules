@@ -1,5 +1,5 @@
 groups:
-- name: example
+- name: containers
   rules:
 
   - alert: container_healthchecks_failing_10m
